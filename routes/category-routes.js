@@ -8,7 +8,7 @@ router.get('/categories', (req, res) => {
   // be sure to include its associated Products
   Category.findAll({
     include: [
-      {model: Product, as 'Products'}
+      {model: Product}
     ]
   })
   .then(categories => res.json(categories))
@@ -21,7 +21,7 @@ router.get('/categories/:id', (req, res) => {
   Category.findOne({
     where: {id: req.params.id},
     include: [
-      {model: Product, as: 'Products'}
+      {model: Product}
     ]
   })
   .then(category => res.json(category))
